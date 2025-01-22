@@ -9,8 +9,8 @@ class Coba extends BaseController
         echo 'Ini controller Coba method index';
     }
 
-    public function about($nama = 'Bayu Gatra', $umur = 25)
+    public function about($nama = '')
     {
-        echo "Halo, nama saya $nama, saya berumur $umur tahun";
+        echo "Halo, nama saya $nama.";
     }
 }
