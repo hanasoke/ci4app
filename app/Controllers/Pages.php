@@ -10,9 +10,7 @@ class Pages extends BaseController
             'title' => 'Home | Coding Wit Hanas',
             'test' => ['one', 'two','three']
         ];
-        echo view('layout/header', $data);
-        echo view('pages/home', );
-        echo view('layout/footer');
+        return view('pages/home', $data);
     }
 
     public function about()
@@ -20,8 +18,26 @@ class Pages extends BaseController
         $data = [
             'title' => 'About Me'
         ];
-        echo view('layout/header', $data);
-        echo view('pages/about');
-        echo view('layout/footer');
+        return view('pages/about', $data);
+    }
+
+    public function contact() 
+    {
+        $data = [
+            'title' => 'Contact Us',
+            'alamat' => [
+                [
+                    'tipe' => 'rumah',
+                    'alamat' => 'Jl. abc No. 123',
+                    'kota' => 'Bandung'
+                ], 
+                [
+                    'tipe' => 'Kantor',
+                    'alamat' => 'Jl. Setiabudi No. 193',
+                    'kota' => 'Bandung'
+                ]
+            ]
+        ];
+        return view('pages/contact', $data);
     }
 }
