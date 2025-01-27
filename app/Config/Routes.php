@@ -11,5 +11,5 @@ $routes->get('/pages/contact', 'Pages::contact');
 $routes->get('/komik/index', 'Komik::index');
 
 $routes->get('/komik', 'Komik::index');
-
+$routes->get('/komik/create', 'Komik::create');
 $routes->get('/komik/(:segment)', 'Komik::detail/$1');

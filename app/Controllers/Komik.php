@@ -40,5 +40,14 @@ class Komik extends BaseController
             'komik' => $this->komikModel->getKomik($slug)
         ];
         return view('komik/detail', $data);
-    } 
+    }
+    
+    public function create()
+    {
+        $data = [
+            'title' => 'Form Tambah Data Komik'
+        ];
+
+        return view('komik/create', $data);
+    }
 }
