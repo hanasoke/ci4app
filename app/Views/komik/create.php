@@ -10,7 +10,10 @@
         <div class="row mb-3">
           <label for="judul" class="col-sm-2 col-form-label">Judul</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="judul" id="judul" autofocus />
+            <input type="text" class="form-control <?= ($validation->hasError('judul')) ? 'is-invalid': ''; ?>" name="judul" id="judul" autofocus />
+            <div class="invalid-feedback">
+              Please provide a valid city.
+            </div>
           </div>
         </div>
         <div class="row mb-3">
