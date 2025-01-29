@@ -13,6 +13,8 @@ class Komik extends BaseController
     }
     public function index()
     {
+        // $komik = $this->komikModel->findAll();
+
         $data = [
             'title' => 'Daftar Komik',
             'komik' => $this->komikModel->getKomik()
@@ -30,7 +32,7 @@ class Komik extends BaseController
 
         // jika komik tidak ada di tabel
         if (empty($data['komik'])) {
-            throw new \Codeigniter\Exceptions\PageNotFoundException('Judul komik' . $slug . 'tidak ditemukan.');
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Judul komik ' . $slug . ' tidak ditemukan.');
         }
 
         return view('komik/detail', $data);
@@ -38,6 +40,7 @@ class Komik extends BaseController
     
     public function create()
     {
+        session();
         $data = [
             'title' => 'Form Tambah Data Komik',
             'validation' => \Config\Services::validation()
@@ -48,12 +51,13 @@ class Komik extends BaseController
 
     public function save()
     {
-        // validasi input 
+        // validasi input  
         if(!$this->validate([
-            'judul' =>  'required|is_unique[komik.judul]'
+            'judul' => 'required|is_unique[komik.judul]'
         ])) {
             $validation = \Config\Services::validation();
-            return redirect()->to('/komik/create')->withInput()->with('validation', $validation);
+            // dd($validation);
+            return redirect()->to('/komik/create')->withInput()->with('validation', $validation); 
         }
 
         $slug = url_title($this->request->getVar('judul'), '-', true);
